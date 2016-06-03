@@ -1,0 +1,49 @@
+h1, h2 {
+	text-align: center;
+}
+
+p {
+	display: inline-block;
+}
+
+#clock {
+	width:350px;
+	padding: 7em 0;
+	
+	margin:auto;
+	border-radius: 50%
+}
+
+#timerBoxes {
+	text-align: center;
+}
+
+#start {
+	width:100px;
+	padding: 1em 0;
+	background-color: black;
+	display:inline-block;
+	margin: auto;
+}
+
+.timeBox {
+
+	width:100px;
+	padding: 1em 0;
+	background-color: green;
+	display:inline-block;
+	margin:auto;
+
+}
+
+.default {
+	background-color: teal;
+}
+
+.work {
+	background-color: green;
+}
+
+.break {
+	background-color: red;
+}
