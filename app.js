@@ -13,6 +13,8 @@ var clock = {
 	button: document.getElementById("start"),
 
 	start: function(){
+		this.sessionHolder = this.sessionTime;
+		this.breakHolder = this.breakTime;
 		this.button.innerHTML = "<button onclick='clock.pause()'>Pause</button>"
 		this.clock.className = "work";
 		this.h1.innerHTML = "Work";
@@ -28,6 +30,7 @@ var clock = {
 		this.h1.innerHTML = "Break";
 		//this.sessionTime = this.breakTime;
 		this.timer = setInterval(this.setSession, 1000);
+		clock.breakTime--; 
 		
 		
 
@@ -62,6 +65,7 @@ var clock = {
 
 			clearInterval(clock.timer);
 			clock.sessionTime = clock.breakTime;
+
 			clock.stop();
 
 			return;
@@ -72,19 +76,24 @@ var clock = {
 		clock.milli  -= 1;
 		clock.sessionH1.innerHTML =  clock.sessionTime + ":" + clock.milli;
 		
+		if(clock.breakTime === 0 && clock.milli ===0 )
+		{
+			clock.reset();
+		}
+		
 	},
 
 	
 
 	raiseSession: function() {
-		this.sessionHolder = this.sessionTime;
+		
 		this.sessionTime += 1
 		this.sessionH1.innerHTML =  this.sessionTime;
 		this.sessionP.innerHTML =  this.sessionTime;
 	},
 
 	lowerSession: function() {
-		this.sessionHolder = this.sessionTime;
+	
 		if(this.sessionTime >= 2){
 			this.sessionTime -= 1
 		}
@@ -94,7 +103,7 @@ var clock = {
 	},
 
 	lowerBreak: function() {
-		this.breakHolder = this.breakTime;
+		
 		if(this.breakTime >=2 ){
 			this.breakTime -= 1
 		}
@@ -105,7 +114,7 @@ var clock = {
 	},
 
 	raiseBreak: function() {
-		this.breakHolder = this.breakTime;
+		
 		this.breakTime += 1
 		//this.sessionH1.innerHTML =  clock.sessionTime;
 		this.breakP.innerHTML =  this.breakTime;
@@ -113,9 +122,12 @@ var clock = {
 	},
 
 	reset: function() {
+		clearInterval(this.timer);
+		console.log("hey");
 		this.sessionTime = this.sessionHolder;
 		this.breakTime = this.breakHolder;
-		//this.start();
+		this.milli = 60;
+		this.start();
 
 	}
 
