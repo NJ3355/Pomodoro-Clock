@@ -1,9 +1,36 @@
+body {
+	background-color: #A4ADD3;
+	font-family: 'Exo', sans-serif;
+}
+
+h1{
+	margin: 1em 0;
+}
+
+h2{
+	margin: 0;
+}
+
 h1, h2 {
 	text-align: center;
+	color: white;
+	font-size: 3em;
 }
 
 p {
 	display: inline-block;
+	margin: 0;
+	color: white;
+	font-size: 1.5em;
+}
+
+button {
+	border: none;
+	background-color: #525669;
+	padding: 15px 32px;
+	border-radius: 10px;
+	color:white;
+	font-family: 'Exo', sans-serif;
 }
 
 #clock {
@@ -11,8 +38,12 @@ p {
 	padding: 7em 0;
 	
 	margin:auto;
-	border-radius: 50%
-
+	border-radius: 50%;
+	border-style: solid;
+	animation-name: border;
+	animation-duration: 3s;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
 
 }
 
@@ -23,16 +54,15 @@ p {
 #start {
 	width:100px;
 	padding: 1em 0;
-	background-color: black;
+	
 	display:inline-block;
 	margin: auto;
 }
 
 .timeBox {
 
-	width:100px;
+	width:150px;
 	padding: 1em 0;
-	background-color: green;
 	display:inline-block;
 	margin:auto;
 
@@ -52,9 +82,15 @@ p {
 }
 
 .work {
-	background-color: green;
+	background-color: #1ad643;
 }
 
 .break {
-	background-color: red;
+	background-color: #ff3535;
+}
+
+
+@keyframes border {
+    from  {border-color: black;}
+    to {border-color: gray;}
 }

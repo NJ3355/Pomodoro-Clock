@@ -1,5 +1,6 @@
 var clock = {
-	
+	sessionHolder: 0,
+	breakHolder: 0,
 	timer: 0,
 	sessionTime: 25,
 	milli: 60,
@@ -27,8 +28,8 @@ var clock = {
 		this.h1.innerHTML = "Break";
 		//this.sessionTime = this.breakTime;
 		this.timer = setInterval(this.setSession, 1000);
-		//this.reset();
-
+		
+		
 
 
 	},
@@ -62,7 +63,10 @@ var clock = {
 			clearInterval(clock.timer);
 			clock.sessionTime = clock.breakTime;
 			clock.stop();
+
 			return;
+			
+			
 		}
 		
 		clock.milli  -= 1;
@@ -73,13 +77,14 @@ var clock = {
 	
 
 	raiseSession: function() {
-		
+		this.sessionHolder = this.sessionTime;
 		this.sessionTime += 1
 		this.sessionH1.innerHTML =  this.sessionTime;
 		this.sessionP.innerHTML =  this.sessionTime;
 	},
 
 	lowerSession: function() {
+		this.sessionHolder = this.sessionTime;
 		if(this.sessionTime >= 2){
 			this.sessionTime -= 1
 		}
@@ -89,6 +94,7 @@ var clock = {
 	},
 
 	lowerBreak: function() {
+		this.breakHolder = this.breakTime;
 		if(this.breakTime >=2 ){
 			this.breakTime -= 1
 		}
@@ -99,9 +105,17 @@ var clock = {
 	},
 
 	raiseBreak: function() {
+		this.breakHolder = this.breakTime;
 		this.breakTime += 1
 		//this.sessionH1.innerHTML =  clock.sessionTime;
 		this.breakP.innerHTML =  this.breakTime;
+
+	},
+
+	reset: function() {
+		this.sessionTime = this.sessionHolder;
+		this.breakTime = this.breakHolder;
+		//this.start();
 
 	}
 
