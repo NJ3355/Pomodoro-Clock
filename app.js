@@ -29,11 +29,15 @@ var clock = {
 		this.clock.className = "break";
 		this.h1.innerHTML = "Break";
 		//this.sessionTime = this.breakTime;
-		this.timer = setInterval(this.setSession, 1000);
-		clock.breakTime--; 
+		//clock.breakTime -=1;
+		this.timer = setInterval(this.setBreak, 1000);
+		 
 		
 		
-
+			/*if(this.sessionTime === 0 && this.milli ===0 )
+				{
+					this.reset();
+				}*/
 
 	},
 
@@ -56,17 +60,22 @@ var clock = {
 
 
 	setSession: function(){
+		//debugger;
 		if(clock.milli === 0 && clock.sessionTime !== 0){
 			
-			clock.milli = 60;
+			clock.milli = 10;
 			clock.sessionTime -= 1;
+
 		}
 		 if(clock.sessionTime === 0 && clock.milli === 0 ){
+	
 
 			clearInterval(clock.timer);
-			clock.sessionTime = clock.breakTime;
-
+			//clock.sessionTime = clock.breakTime;
+			
 			clock.stop();
+
+
 
 			return;
 			
@@ -76,10 +85,36 @@ var clock = {
 		clock.milli  -= 1;
 		clock.sessionH1.innerHTML =  clock.sessionTime + ":" + clock.milli;
 		
-		if(clock.breakTime === 0 && clock.milli ===0 )
-		{
-			clock.reset();
+	
+		
+	},
+
+	setBreak: function(){
+		debugger;
+		if(clock.milli === 0 && clock.breakTime !== 0){
+			
+			clock.milli = 60;
+			clock.breakTime -= 1;
+
 		}
+		 if(clock.breakTime === 0 && clock.milli === 0 ){
+	
+
+			clearInterval(clock.timer);
+			//clock.sessionTime = clock.breakTime;
+			clock.reset();
+
+
+
+			return;
+			
+			
+		}
+		
+		clock.milli  -= 1;
+		clock.sessionH1.innerHTML =  clock.breakTime + ":" + clock.milli;
+		
+	
 		
 	},
 
@@ -123,7 +158,8 @@ var clock = {
 
 	reset: function() {
 		clearInterval(this.timer);
-		console.log("hey");
+		
+		
 		this.sessionTime = this.sessionHolder;
 		this.breakTime = this.breakHolder;
 		this.milli = 60;
