@@ -1,0 +1,93 @@
+$page-font: 'Exo', sans-serif;
+
+body {
+	background-color: #A4ADD3;
+	font-family: $page-font;
+
+	h1{
+	margin: 1em 0;
+	}
+
+	h2{
+		margin: 0;
+	}
+
+	h1, h2 {
+		text-align: center;
+		color: white;
+		font-size: 3em;
+	}
+
+	p {
+		display: inline-block;
+		margin: 0;
+		color: white;
+		font-size: 1.5em;
+	}
+
+	button {
+		border: none;
+		background-color: #525669;
+		padding: 15px 32px;
+		border-radius: 10px;
+		color:white;
+		font-family: $page-font;
+	}
+
+	#clock {
+		width:350px;
+		padding: 7em 0;
+		margin:auto;
+		border-radius: 50%;
+		border-style: solid;
+		animation-name: border;
+		animation-duration: 3s;
+	    animation-direction: alternate;
+	    animation-iteration-count: infinite;
+
+			&.default {
+				background-color: teal;
+			}
+
+			&.work {
+				background-color: #1ad643;
+			}
+
+			&.break {
+				background-color: #ff3535;
+			}
+
+	}
+
+	#timerBoxes {
+		text-align: center;
+
+		.timeBox {
+			width:150px;
+			padding: 1em 0;
+			display:inline-block;
+			margin:auto;
+			/*This style prevents the blue highlight when double clicking something*/
+			-webkit-touch-callout: none;
+		    -webkit-user-select: none;
+		    -khtml-user-select: none;
+		    -moz-user-select: none;
+		    -ms-user-select: none;
+		    user-select: none;
+		}
+
+		#start {
+			width:100px;
+			padding: 1em 0;	
+			display:inline-block;
+			margin: auto;
+		}
+	}
+
+}
+
+
+@keyframes border {
+    from  {border-color: black;}
+    to {border-color: gray;}
+}

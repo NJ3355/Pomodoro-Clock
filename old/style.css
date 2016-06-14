@@ -65,8 +65,6 @@ button {
 	padding: 1em 0;
 	display:inline-block;
 	margin:auto;
-
-
 	/*This style prevents the blue highlight when double clicking something*/
 	-webkit-touch-callout: none;
     -webkit-user-select: none;
